@@ -2,19 +2,23 @@ module.exports = function(grunt) {
   //var pkg = require("./package.json");
 
   grunt.initConfig({
-    jasmine: {
-      pivotal: {
-        src: 'src/**/*.js',
-        options: {
-          specs: 'spec/*spec.js',
-          helpers: 'spec/*helper.js'
+    jasmine_node: {
+      options: {
+        forceExit: true,
+        match: '.',
+        matchall: false,
+        extensions: 'js',
+        specNameMatcher: 'spec',
+        jUnit: {
+          report: false
         }
-      }
+      },
+      all: ['spec/']
     },
     jshint: {
       all: [
         'Gruntfile.js',
-        'src/**/*.js',
+        'lib/**/*.js',
         'spec/**/*.js'
       ],
       options: {
@@ -23,8 +27,10 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-jasmine-node');
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
-  grunt.registerTask('test', ['jshint', 'jasmine']);
+  grunt.registerTask('test', ['jshint', 'jasmine_node']);
+
+  grunt.registerTask('default', ['jshint', 'jasmine_node']);
 };

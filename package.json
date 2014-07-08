@@ -7,17 +7,17 @@
     "homepage":  "http://ydigitalfactory.com/graph-acl",
     "dependencies": {
         "async": "*",
-        "grunt": "*",
-        "grunt-contrib-jasmine": "*",
-        "grunt-contrib-jshint": "*",
-        "jasmine-node": "*",
-        "jshint": "*",
         "neo4j": "*"
+    },
+    "devDependencies": {
+        "grunt": "*",
+        "grunt-contrib-jshint": "*",
+        "grunt-jasmine-node": "*"
     },
     "engines": {
         "node": ">=0.10.29"
     },
-    "main": "app.js",
+    "main": "./index.js",
     "repository": {
         "type" : "git",
         "url" : "https://github.com/emerging/node-graph-acl"
