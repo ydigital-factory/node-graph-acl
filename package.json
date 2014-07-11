@@ -7,7 +7,7 @@
     "homepage":  "http://ydigitalfactory.com/graph-acl",
     "dependencies": {
         "async": "*",
-        "node-neo4j": ">2.0.0"
+        "node-neo4j": ">2.0.0-RC6"
     },
     "devDependencies": {
         "grunt": "*",
