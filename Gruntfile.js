@@ -1,17 +1,12 @@
 module.exports = function(grunt) {
-  //var pkg = require("./package.json");
-
+  'use strict';
   grunt.initConfig({
     jasmine_node: {
       options: {
-        forceExit: true,
         match: '.',
         matchall: false,
         extensions: 'js',
-        specNameMatcher: 'spec',
-        jUnit: {
-          report: false
-        }
+        specNameMatcher: 'spec'
       },
       all: ['spec/']
     },
@@ -31,6 +26,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.registerTask('test', ['jshint', 'jasmine_node']);
-
-  grunt.registerTask('default', ['jshint', 'jasmine_node']);
+  grunt.registerTask('default', ['test']);
 };
