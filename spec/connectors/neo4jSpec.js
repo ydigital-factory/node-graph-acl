@@ -144,8 +144,40 @@ describe("Call getNodeProperties with nodeId", function () {
   });
 });
 
-// Neo4jConnector.prototype.addRelationship
 
+// Neo4jConnector.prototype.getRelationship
+// Neo4jConnector.prototype.addRelationship
+describe("Call Add Relationship with two new nodes", function () {
+  var createdNode1;
+  var createdNode2;
+  var addedRelationship;
+  var retrievedRelationship;
+
+  beforeEach(function(done) {
+    testACL.connector.createNode(properties1, labels1, function(err, node) {
+      createdNode1 = node;
+      testACL.connector.createNode(properties1, labels1, function(err, node) {
+        createdNode2 = node;
+        var type = 'TEST';
+        testACL.connector.addRelationship(createdNode1._id, createdNode2._id, type,
+                          properties1, function(err, relationship) {
+          addedRelationship = relationship;
+
+          testACL.connector.getRelationship(addedRelationship._id, function(err, relationship) {
+            retrievedRelationship = relationship;
+
+            done();
+          });
+        });
+      });
+    });
+  });
+
+  it("should create that relationship", function (done) {
+    expect(addedRelationship).toEqual(retrievedRelationship);
+    done();
+  });
+});
 
 
 
