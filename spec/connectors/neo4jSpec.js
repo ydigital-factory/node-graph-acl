@@ -1,5 +1,5 @@
 var neo4j = require('node-neo4j');
-var acl = require("../index.js");
+var acl = require("../../index.js");
 
 var db = new neo4j('http://localhost:7474');
 var testACL = new acl(new acl.neo4jConnector(db));
