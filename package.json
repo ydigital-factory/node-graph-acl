@@ -12,7 +12,8 @@
     "devDependencies": {
         "grunt": "*",
         "grunt-contrib-jshint": "*",
-        "grunt-jasmine-node": "*"
+        "grunt-jasmine-node": "*",
+        "grunt-jsdoc": "*"
     },
     "engines": {
         "node": ">=0.10.29"

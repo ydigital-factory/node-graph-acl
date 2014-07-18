@@ -19,12 +19,23 @@ module.exports = function(grunt) {
       options: {
         jshintrc: '.jshintrc'
       }
+    },
+    jsdoc : {
+      dist : {
+        src: ['lib/**/*.js', 'spec/**/*.js'],
+        options: {
+          destination: 'doc'
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-jasmine-node');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-jsdoc');
 
   grunt.registerTask('test', ['jshint', 'jasmine_node']);
-  grunt.registerTask('default', ['test']);
+  grunt.registerTask('doc', ['jsdoc']);
+  grunt.registerTask('dev', ['test', 'doc']);
+  grunt.registerTask('default', ['dev']);
 };
