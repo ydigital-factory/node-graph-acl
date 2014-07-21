@@ -10,20 +10,19 @@ var properties1 = {
   p1: 'test prop 1',
   p2: 'test prop 2'
 };
-
 var properties2 = {
   p3: 'test prop 3',
   p4: 'test prop 4'
 };
 
 // Test labels
-var labels2 = [
-  'TestLabel3',
-  'TestLabel4'
-];
 var labels1 = [
   'TestLabel1',
   'TestLabel2'
+];
+var labels2 = [
+  'TestLabel3',
+  'TestLabel4'
 ];
 
 // Test nodes and relationships
@@ -302,50 +301,148 @@ describe("Call removeRelationship", function () {
 
 
 // Neo4jConnector.prototype.getRelationshipProperties
+describe("Call getRelationshipProperties", function () {
+  var retrievedProperties;
 
+  beforeEach(function(done) {
+    testACL.connector.getRelationshipProperties(testRelationship1._id, function(err, properties) {
+      retrievedProperties = properties;
 
+      done();
+    });
+  });
 
-
+  it("should return that relationship properties", function (done) {
+    expect(properties2).toEqual(retrievedProperties);
+    done();
+  });
+});
 
 // Neo4jConnector.prototype.getNodeRelationships
+describe("Call getNodeRelationships", function () {
+  var retrievedRelationships;
+
+  beforeEach(function(done) {
+    var options = {
+      types: ['TEST'],
+      direction: 'all'
+    };
+    testACL.connector.getNodeRelationships(testNode1._id, options, function(err, relationships) {
+      retrievedRelationships = relationships;
+
+      done();
+    });
+  });
+
+  it("should return that node relationships", function (done) {
+    expect(retrievedRelationships[0].p3).toEqual(properties2.p3);
+    expect(retrievedRelationships[0].p4).toEqual(properties2.p4);
+    expect(retrievedRelationships[0]._type).toEqual('TEST');
+
+    //@todo: test with more than 1 relationship. Maybe in a different test
+
+    done();
+  });
+});
+
+
+
+// Neo4jConnector.prototype.addNodeProperties
 
 
 
 
-// Neo4jConnector.prototype.getNodeRelationshipsProperties
+// Neo4jConnector.prototype.updateNodeProperties
 
 
 
 
-// Neo4jConnector.prototype.addProperty
+// Neo4jConnector.prototype.removeNodeProperties
 
 
 
 
-// Neo4jConnector.prototype.updateProperty
+// Neo4jConnector.prototype.addRelationshipProperties
 
 
 
 
-// Neo4jConnector.prototype.removeProperty
+// Neo4jConnector.prototype.updateRelationshipProperties
 
 
 
 
-// Neo4jConnector.prototype.getLabels
+// Neo4jConnector.prototype.removeRelationshipProperties
 
 
 
 
-// Neo4jConnector.prototype.addLabel
+// Neo4jConnector.prototype.getNodeLabels
+describe("Call getNodeLabels", function () {
+  var retrievedLabels;
 
+  beforeEach(function(done) {
+    testACL.connector.getNodeLabels(testNode1._id, function(err, labels) {
+      retrievedLabels = labels;
 
+      done();
+    });
+  });
 
+  it("should return that node labels", function (done) {
+    expect(retrievedLabels).toEqual(labels1);
 
-// Neo4jConnector.prototype.removeLabel
+    done();
+  });
+});
 
+// Neo4jConnector.prototype.addNodeLabels
+describe("Call addNodeLabels", function () {
+  var addSuccess;
 
+  beforeEach(function(done) {
+    testACL.connector.addNodeLabels(testNode1._id, labels2, function(err, success) {
+      addSuccess = success;
 
+      done();
+    });
+  });
+
+  it("should add labels to the given node", function (done) {
+    expect(addSuccess).toEqual(true);
+
+    // update test node info
+    testACL.connector.getNode(testNode1._id, function(err, node) {
+      testNode1 = node;
+    });
+
+    done();
+  });
+});
+
+// Neo4jConnector.prototype.removeNodeLabel
+describe("Call removeNodeLabel", function () {
+  var removeSuccess;
+
+  beforeEach(function(done) {
+    testACL.connector.removeNodeLabel(testNode1._id, 'TestLabel1', function(err, success) {
+      removeSuccess = success;
+
+      done();
+    });
+  });
+
+  it("should remove label from a given node", function (done) {
+    expect(removeSuccess).toEqual(true);
+
+    // update test node info
+    testACL.connector.getNode(testNode1._id, function(err, node) {
+      testNode1 = node;
+    });
+
+    done();
+  });
+});
 
 // Neo4jConnector.prototype.startTransaction
 
@@ -363,5 +460,13 @@ describe("Call removeRelationship", function () {
 
 
 
-
 // After all tests, delete nodes created for testing
+// Doesn't work yet
+
+//testACL.connector.deleteNode(testNode1._id, function(err, success) {});
+//testACL.connector.deleteNode(testNode2._id, function(err, success) {});
+//testACL.connector.deleteNode(testNode3._id, function(err, success) {});
+//testACL.connector.deleteNode(testNode4._id, function(err, success) {});
+
+//testACL.connector.deleteRelationship(testRelationship1._id, function(err, success) {});
+//testACL.connector.deleteRelationship(testRelationship2._id, function(err, success) {});
