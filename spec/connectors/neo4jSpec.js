@@ -345,37 +345,126 @@ describe("Call getNodeRelationships", function () {
   });
 });
 
-
-
 // Neo4jConnector.prototype.addNodeProperties
+describe("Call addNodeProperties", function () {
+  var updateSuccess;
 
+  beforeEach(function(done) {
+    testACL.connector.addNodeProperties(testNode4._id, properties2, function(err, success) {
+      updateSuccess = success;
 
+      done();
+    });
+  });
 
+  it("should add properties to node", function (done) {
+    expect(updateSuccess.updateProperties).toEqual(true);
+    expect(updateSuccess.updateLabels).toEqual(true);
+
+    done();
+  });
+});
 
 // Neo4jConnector.prototype.updateNodeProperties
+describe("Call updateNodeProperties", function () {
+  var updateSuccess;
+
+  beforeEach(function(done) {
+    testACL.connector.updateNodeProperties(testNode4._id, properties1, function(err, success) {
+      updateSuccess = success;
+
+      done();
+    });
+  });
 
 
+  it("should update node with new properties", function (done) {
+    expect(updateSuccess.updateProperties).toEqual(true);
+    expect(updateSuccess.updateLabels).toEqual(true);
 
+    done();
+  });
+});
 
 // Neo4jConnector.prototype.removeNodeProperties
+describe("Call removeNodeProperties", function () {
+  var updateSuccess;
+
+  beforeEach(function(done) {
+    testACL.connector.removeNodeProperties(testNode4._id, properties1, function(err, success) {
+      updateSuccess = success;
+
+      done();
+    });
+  });
 
 
+  it("should remove properties from node", function (done) {
+    expect(updateSuccess.updateProperties).toEqual(true);
+    expect(updateSuccess.updateLabels).toEqual(true);
 
+    done();
+  });
+});
 
 // Neo4jConnector.prototype.addRelationshipProperties
+describe("Call addRelationshipProperties", function () {
+  var updateSuccess;
 
+  beforeEach(function(done) {
+    testACL.connector.addNodeProperties(testRelationship1._id, properties2, function(err, success) {
+      updateSuccess = success;
 
+      done();
+    });
+  });
 
+  it("should add properties to relationship", function (done) {
+    expect(updateSuccess).toEqual(true);
+
+    done();
+  });
+});
 
 // Neo4jConnector.prototype.updateRelationshipProperties
+describe("Call updateRelationshipProperties", function () {
+  var updateSuccess;
+
+  beforeEach(function(done) {
+    testACL.connector.updateRelationshipProperties(testRelationship1._id, properties1, function(err, success) {
+      updateSuccess = success;
+
+      done();
+    });
+  });
 
 
+  it("should update relationship with new properties", function (done) {
+    expect(updateSuccess).toEqual(true);
 
+    done();
+  });
+});
 
 // Neo4jConnector.prototype.removeRelationshipProperties
+describe("Call removeRelationshipProperties", function () {
+  var updateSuccess;
+
+  beforeEach(function(done) {
+    testACL.connector.removeRelationshipProperties(testRelationship1._id, properties1, function(err, success) {
+      updateSuccess = success;
+
+      done();
+    });
+  });
 
 
+  it("should remove properties from relationship", function (done) {
+    expect(updateSuccess).toEqual(true);
 
+    done();
+  });
+});
 
 // Neo4jConnector.prototype.getNodeLabels
 describe("Call getNodeLabels", function () {
