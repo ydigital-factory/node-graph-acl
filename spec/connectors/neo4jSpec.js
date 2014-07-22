@@ -412,7 +412,7 @@ describe("Call addRelationshipProperties", function () {
   var updateSuccess;
 
   beforeEach(function(done) {
-    testACL.connector.addNodeProperties(testRelationship1._id, properties2, function(err, success) {
+    testACL.connector.addRelationshipProperties(testRelationship1._id, properties2, function(err, success) {
       updateSuccess = success;
 
       done();
