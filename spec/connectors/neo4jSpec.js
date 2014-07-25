@@ -154,8 +154,43 @@ describe("Call getNodesWithLabel with inexistent label", function () {
   });
 });
 
+// Neo4jConnector.prototype.getNodesWithProperties
+describe("Call getNodesWithProperties with property {p1: 'test prop 1'}", function () {
+  var retrievedNodes;
+
+  beforeEach(function(done) {
+    testACL.connector.getNodesWithProperties({p1: 'test prop 1'}, function(err, nodes) {
+      retrievedNodes = nodes;
+      done();
+    });
+  });
+
+  it("should retrieve all nodes with given label", function (done) {
+    expect(retrievedNodes.length).toBeGreaterThan(0);
+    //expect(testNode1._id).toEqual(retrievedNodes[0]._id);
+    //expect(testNode4._id).toEqual(retrievedNodes[1]._id);
+    done();
+  });
+});
+
+describe("Call getNodesWithProperties with inexistent properties", function () {
+  var retrievedNodes;
+
+  beforeEach(function(done) {
+    testACL.connector.getNodesWithProperties('INEXISTENT', {inexistent: 'inexistent'}, function(err, nodes) {
+      retrievedNodes = nodes;
+      done();
+    });
+  });
+
+  it("should not retrieve nodes", function (done) {
+    expect(retrievedNodes.length).toBe(0);
+    done();
+  });
+});
+
 // Neo4jConnector.prototype.getNodesWithLabelsAndProperties
-describe("Call getNodesWithLabel with label 'TestLabel1' and property {p1: 'test prop 1'}", function () {
+describe("Call getNodesWithLabelsAndProperties with label 'TestLabel1' and property {p1: 'test prop 1'}", function () {
   var retrievedNodes;
 
   beforeEach(function(done) {
@@ -173,7 +208,7 @@ describe("Call getNodesWithLabel with label 'TestLabel1' and property {p1: 'test
   });
 });
 
-describe("Call getNodesWithLabel with label inexistent labels and inexistent properties", function () {
+describe("Call getNodesWithLabelsAndProperties with label inexistent labels and inexistent properties", function () {
   var retrievedNodes;
 
   beforeEach(function(done) {
