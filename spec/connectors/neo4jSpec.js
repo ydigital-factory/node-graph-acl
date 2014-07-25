@@ -153,7 +153,7 @@ describe("Call getNodesWithLabel with inexistent label", function () {
     done();
   });
 });
-
+/*
 // Neo4jConnector.prototype.getNodesWithProperties
 describe("Call getNodesWithProperties with property {p1: 'test prop 1'}", function () {
   var retrievedNodes;
@@ -165,7 +165,7 @@ describe("Call getNodesWithProperties with property {p1: 'test prop 1'}", functi
     });
   });
 
-  it("should retrieve all nodes with given label", function (done) {
+  it("should retrieve all nodes with given properties", function (done) {
     expect(retrievedNodes.length).toBeGreaterThan(0);
     //expect(testNode1._id).toEqual(retrievedNodes[0]._id);
     //expect(testNode4._id).toEqual(retrievedNodes[1]._id);
@@ -188,7 +188,7 @@ describe("Call getNodesWithProperties with inexistent properties", function () {
     done();
   });
 });
-
+*/
 // Neo4jConnector.prototype.getNodesWithLabelsAndProperties
 describe("Call getNodesWithLabelsAndProperties with label 'TestLabel1' and property {p1: 'test prop 1'}", function () {
   var retrievedNodes;
@@ -220,6 +220,104 @@ describe("Call getNodesWithLabelsAndProperties with label inexistent labels and 
 
   it("should not retrieve nodes", function (done) {
     expect(retrievedNodes.length).toBe(0);
+    done();
+  });
+});
+
+// Neo4jConnector.prototype.existsNodeWithLabel
+describe("Call existsNodeWithLabel with label 'TestLabel1'", function () {
+  var existsNode;
+
+  beforeEach(function(done) {
+    testACL.connector.existsNodeWithLabel('TestLabel1', function(err, exists) {
+      existsNode = exists;
+      done();
+    });
+  });
+
+  it("should return true", function (done) {
+    expect(existsNode).toBe(true);
+    done();
+  });
+});
+describe("Call existsNodeWithLabel with inexistent label", function () {
+  var existsNode;
+
+  beforeEach(function(done) {
+    testACL.connector.existsNodeWithLabel('INEXISTENT', function(err, exists) {
+      existsNode = exists;
+      done();
+    });
+  });
+
+  it("should return false", function (done) {
+    expect(existsNode).toBe(false);
+    done();
+  });
+});
+/*
+// Neo4jConnector.prototype.existsNodeWithProperties
+describe("Call existsNodeWithProperties with property {p1: 'test prop 1'}", function () {
+  var existsNode;
+
+  beforeEach(function(done) {
+    testACL.connector.existsNodeWithProperties({p1: 'test prop 1'}, function(err, exists) {
+      existsNode = exists;
+      done();
+    });
+  });
+
+  it("should return true", function (done) {
+    expect(existsNode).toBe(true);
+    done();
+  });
+});
+
+describe("Call existsNodeWithProperties with inexistent properties", function () {
+  var existsNode;
+
+  beforeEach(function(done) {
+    testACL.connector.existsNodeWithProperties('INEXISTENT', {inexistent: 'inexistent'}, function(err, exists) {
+      existsNode = exists;
+      done();
+    });
+  });
+
+  it("should return false", function (done) {
+    expect(existsNode).toBe(false);
+    done();
+  });
+});
+*/
+// Neo4jConnector.prototype.existsNodeWithLabelsAndProperties
+describe("Call existsNodeWithLabelsAndProperties with label 'TestLabel1' and property {p1: 'test prop 1'}", function () {
+  var existsNode;
+
+  beforeEach(function(done) {
+    testACL.connector.existsNodeWithLabelsAndProperties('TestLabel1', {p1: 'test prop 1'}, function(err, exists) {
+      existsNode = exists;
+      done();
+    });
+  });
+
+  it("should return true", function (done) {
+    expect(existsNode).toBe(true);
+    done();
+  });
+});
+
+describe("Call existsNodeWithLabelsAndProperties with label inexistent labels and inexistent properties", function () {
+  var existsNode;
+
+  beforeEach(function(done) {
+    testACL.connector.existsNodeWithLabelsAndProperties('INEXISTENT', {inexistent: 'inexistent'}, function(err, exists) {
+      existsNode = exists;
+      done();
+    });
+  });
+
+  it("should return false", function (done) {
+    expect(existsNode).toBe(false);
     done();
   });
 });
