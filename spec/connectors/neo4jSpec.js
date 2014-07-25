@@ -120,6 +120,75 @@ describe("Call getNode with nodeId", function () {
   });
 });
 
+// Neo4jConnector.prototype.getNodesWithLabel
+describe("Call getNodesWithLabel with label 'TestLabel1'", function () {
+  var retrievedNodes;
+
+  beforeEach(function(done) {
+    testACL.connector.getNodesWithLabel('TestLabel1', function(err, nodes) {
+      retrievedNodes = nodes;
+      done();
+    });
+  });
+
+  it("should retrieve all nodes with given label", function (done) {
+    expect(retrievedNodes.length).toBeGreaterThan(0);
+    //expect(testNode1._id).toEqual(retrievedNodes[0]._id);
+    //expect(testNode4._id).toEqual(retrievedNodes[1]._id);
+    done();
+  });
+});
+describe("Call getNodesWithLabel with inexistent label", function () {
+  var retrievedNodes;
+
+  beforeEach(function(done) {
+    testACL.connector.getNodesWithLabel('INEXISTENT', function(err, nodes) {
+      retrievedNodes = nodes;
+      done();
+    });
+  });
+
+  it("should not retrieve nodes", function (done) {
+    expect(retrievedNodes.length).toBe(0);
+    done();
+  });
+});
+
+// Neo4jConnector.prototype.getNodesWithLabelsAndProperties
+describe("Call getNodesWithLabel with label 'TestLabel1' and property {p1: 'test prop 1'}", function () {
+  var retrievedNodes;
+
+  beforeEach(function(done) {
+    testACL.connector.getNodesWithLabelsAndProperties('TestLabel1', {p1: 'test prop 1'}, function(err, nodes) {
+      retrievedNodes = nodes;
+      done();
+    });
+  });
+
+  it("should retrieve all nodes with given label", function (done) {
+    expect(retrievedNodes.length).toBeGreaterThan(0);
+    //expect(testNode1._id).toEqual(retrievedNodes[0]._id);
+    //expect(testNode4._id).toEqual(retrievedNodes[1]._id);
+    done();
+  });
+});
+
+describe("Call getNodesWithLabel with label inexistent labels and inexistent properties", function () {
+  var retrievedNodes;
+
+  beforeEach(function(done) {
+    testACL.connector.getNodesWithLabelsAndProperties('INEXISTENT', {inexistent: 'inexistent'}, function(err, nodes) {
+      retrievedNodes = nodes;
+      done();
+    });
+  });
+
+  it("should not retrieve nodes", function (done) {
+    expect(retrievedNodes.length).toBe(0);
+    done();
+  });
+});
+
 // Neo4jConnector.prototype.updateNode
 describe("Call updateNode with nodeId, properties and labels", function () {
   var updatedNode;
