@@ -63,7 +63,7 @@ var user3;
 var role1;
 var role2;
 var role3;
-/*
+
 // ACL.prototype.addUserRoles = function(userId, roles, callback)
 describe("Call addUserRoles with userID and a single role", function () {
   var addSuccess;
@@ -83,7 +83,7 @@ describe("Call addUserRoles with userID and a single role", function () {
 describe("Call addUserRoles with userID and a 3 roles", function () {
   var addSuccess;
   beforeEach(function(done) {
-    testACL.addUserRoles('user1', ['group1', 'group2', 'group3'], function(err, success) {
+    testACL.addUserRoles('user2', ['group2', 'group3', 'group4'], function(err, success) {
       addSuccess = success;
       done();
     });
@@ -94,12 +94,12 @@ describe("Call addUserRoles with userID and a 3 roles", function () {
     done();
   });
 });
-*/
+
 // ACL.prototype._createUser = function(userId, callback)
 describe("Call _createUser with userID", function () {
   var createdUser;
   beforeEach(function(done) {
-    testACL._createUser('user1', function(err, user) {
+    testACL._createUser('user3', function(err, user) {
       createdUser = user;
       done();
     });
@@ -107,7 +107,7 @@ describe("Call _createUser with userID", function () {
 
   it("should create a user", function (done) {
     expect(createdUser).toBeDefined();
-    expect(createdUser.uid).toBe('user1');
+    expect(createdUser.uid).toBe('user3');
     done();
   });
 });
@@ -116,7 +116,7 @@ describe("Call _createUser with userID", function () {
 describe("Call _createRole with userID", function () {
   var createdRole;
   beforeEach(function(done) {
-    testACL._createRole('role1', function(err, role) {
+    testACL._createRole('role5', function(err, role) {
       createdRole = role;
       done();
     });
@@ -124,7 +124,7 @@ describe("Call _createRole with userID", function () {
 
   it("should create a role", function (done) {
     expect(createdRole).toBeDefined();
-    expect(createdRole.rid).toBe('role1');
+    expect(createdRole.rid).toBe('role5');
     done();
   });
 });
