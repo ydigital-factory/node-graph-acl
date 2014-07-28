@@ -34,15 +34,15 @@ var testRelationship1;
 var testRelationship2;
 
 // Neo4jConnector.prototype.createNode
-describe("Call createNode with properties and labels", function () {
+describe("Call createNode with labels and properties", function () {
   beforeEach(function(done) {
-    testACL.connector.createNode(properties1, labels1, function(err, createdNode) {
+    testACL.connector.createNode(labels1, properties1, function(err, createdNode) {
       testNode1 = createdNode;
       done();
     });
   });
 
-  it("should create a user with properties and labels", function (done) {
+  it("should create a user with labels and properties", function (done) {
     expect(testNode1).toBeDefined();
     expect(testNode1.p1).toEqual(properties1.p1);
     expect(testNode1.p2).toEqual(properties1.p2);
@@ -51,15 +51,15 @@ describe("Call createNode with properties and labels", function () {
   });
 });
 
-describe("Call createNode with no properties and no labels", function () {
+describe("Call createNode with no labels and no properties", function () {
   beforeEach(function(done) {
-    testACL.connector.createNode({}, [], function(err, createdNode) {
+    testACL.connector.createNode([], {}, function(err, createdNode) {
       testNode2 = createdNode;
       done();
     });
   });
 
-  it("should create a user without properties or labels", function (done) {
+  it("should create a user without labels or properties", function (done) {
     expect(testNode2).toBeDefined();
     expect(testNode2.p1).toEqual(undefined);
     expect(testNode2.p2).toEqual(undefined);
@@ -70,7 +70,7 @@ describe("Call createNode with no properties and no labels", function () {
 
 describe("Call createNode with properties", function () {
   beforeEach(function(done) {
-    testACL.connector.createNode(properties1, [], function(err, createdNode) {
+    testACL.connector.createNode([], properties1, function(err, createdNode) {
       testNode3 = createdNode;
       done();
     });
@@ -88,7 +88,7 @@ describe("Call createNode with properties", function () {
 
 describe("Call createNode with labels", function () {
   beforeEach(function(done) {
-    testACL.connector.createNode({}, labels1, function(err, createdNode) {
+    testACL.connector.createNode(labels1, {}, function(err, createdNode) {
       testNode4 = createdNode;
       done();
     });
@@ -323,12 +323,12 @@ describe("Call existsNodeWithLabelsAndProperties with label inexistent labels an
 });
 
 // Neo4jConnector.prototype.updateNode
-describe("Call updateNode with nodeId, properties and labels", function () {
+describe("Call updateNode with nodeId, labels and properties", function () {
   var updatedNode;
   var updateSuccess;
 
   beforeEach(function(done) {
-      testACL.connector.updateNode(testNode2._id, properties2, labels2, function(err, success) {
+      testACL.connector.updateNode(testNode2._id,  labels2, properties2, function(err, success) {
         updateSuccess = success;
 
         testACL.connector.getNode(testNode2._id, function(err, node) {
@@ -338,7 +338,7 @@ describe("Call updateNode with nodeId, properties and labels", function () {
       });
   });
 
-  it("should update properties and labels of a node", function (done) {
+  it("should update labels and properties of a node", function (done) {
     expect(updateSuccess).toBeDefined();
     expect(updateSuccess.updateProperties).toEqual(true);
     expect(updateSuccess.updateLabels).toEqual(true);
@@ -360,7 +360,7 @@ describe("Call deleteNode with nodeId", function () {
   var success;
 
   beforeEach(function(done) {
-    testACL.connector.createNode(properties1, labels1, function(err, node) {
+    testACL.connector.createNode(labels1, properties1, function(err, node) {
       createdNode = node;
       testACL.connector.deleteNode(node._id, function(err, deleteSuccess) {
         success = deleteSuccess;

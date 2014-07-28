@@ -1,6 +1,16 @@
 module.exports = function(grunt) {
   'use strict';
   grunt.initConfig({
+    jshint: {
+      all: [
+        'Gruntfile.js',
+        'lib/**/*.js',
+        'spec/**/*.js'
+      ],
+      options: {
+        jshintrc: '.jshintrc'
+      }
+    },
     jasmine_node: {
       options: {
         match: '.',
@@ -10,14 +20,20 @@ module.exports = function(grunt) {
       },
       all: ['spec/']
     },
-    jshint: {
-      all: [
-        'Gruntfile.js',
-        'lib/**/*.js',
-        'spec/**/*.js'
-      ],
-      options: {
-        jshintrc: '.jshintrc'
+    lintspaces: {
+      all: {
+        lib: [
+          'lib/**/*.js',
+          'spec/**/*.js'
+        ],
+        options: {
+          newline: true,
+          newlineMaximum: 2,
+          trailingspaces: true,
+          indentation: 'spaces',
+          spaces: 2,
+          indentationGuess: true
+        }
       }
     },
     jsdoc : {
@@ -30,11 +46,12 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-jasmine-node');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-lintspaces');
+  grunt.loadNpmTasks('grunt-jasmine-node');
   grunt.loadNpmTasks('grunt-jsdoc');
 
-  grunt.registerTask('test', ['jshint', 'jasmine_node']);
+  grunt.registerTask('test', ['jshint', 'jasmine_node', 'lintspaces']);
   grunt.registerTask('doc', ['jsdoc']);
   grunt.registerTask('dev', ['test', 'doc']);
   grunt.registerTask('default', ['dev']);
