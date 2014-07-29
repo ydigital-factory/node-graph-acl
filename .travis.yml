@@ -22,5 +22,3 @@ env:
   - NEO4J_VERSION="2.0.4"
 install:
   - npm install
-before_script:
-  - grunt build
