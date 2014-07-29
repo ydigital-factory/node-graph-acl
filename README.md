@@ -2,7 +2,7 @@ node-graph-acl
 ==============
 
 
-master branch: [![Build Status](https://travis-ci.org/washimimizuku/node-graph-acl.png?branch=master)](https://github.com/ydigital-factory/node-graph-acl)
+master branch: [![Build Status](https://travis-ci.org/ydigital-factory/node-graph-acl.svg)](https://github.com/ydigital-factory/node-graph-acl)
 
 
 An ACL module using Graph databases.

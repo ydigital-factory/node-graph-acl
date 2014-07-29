@@ -25,5 +25,8 @@
         "url" : "https://github.com/emerging/node-graph-acl"
     },
     "author": "Nuno Barreto <nbarreto@gmail.com>",
-    "contributors": []
+    "contributors": [],
+    "scripts": {
+      "test": "grunt test"
+    }
 }
