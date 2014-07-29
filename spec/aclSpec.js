@@ -76,7 +76,7 @@ describe("ACL.prototype.addUserRoles:", function () {
       });
     });
 
-    it("should create a user, a role, and a relationship between them", function (done) {
+    it("should create a user, a role, and a relationship between them.", function (done) {
       expect(addSuccess).toBeDefined();
       // @todo More verifications needed!
       done();
@@ -93,7 +93,7 @@ describe("ACL.prototype.addUserRoles:", function () {
       });
     });
 
-    it("should create a user, 3 roles, and relatinships between user and roles", function (done) {
+    it("should create a user, 3 roles, and relatinships between user and roles.", function (done) {
       expect(addSuccess).toBeDefined();
       // @todo More verifications needed!
       done();
@@ -115,7 +115,7 @@ describe("ACL.prototype.removeUserRoles:", function () {
       });
     });
 
-    it("should remove relationship between user and role", function (done) {
+    it("should remove relationship between user and role.", function (done) {
       expect(removeSuccess).toBeDefined();
       // @todo More verifications needed!
       done();
@@ -134,7 +134,7 @@ describe("ACL.prototype.removeUserRoles:", function () {
       });
     });
 
-    it("should remove relationship between user and the 3 roles", function (done) {
+    it("should remove relationship between user and the 3 roles.", function (done) {
       expect(removeSuccess).toBeDefined();
       // @todo More verifications needed!
       done();
@@ -148,6 +148,24 @@ describe("ACL.prototype.removeUserRoles:", function () {
 
 // ACL.prototype.userRoles = function(userId, callback)
 describe("ACL.prototype.userRoles:", function () {
+  describe("Call userRoles with userID", function () {
+    var userRoles;
+
+    beforeEach(function(done) {
+      testACL.addUserRoles('user1', ['group1', 'group2', 'group3'], function(err, addSuccess) {
+        testACL.userRoles('user1', function(err, roles) {
+          userRoles = roles;
+          done();
+        });
+      });
+    });
+
+    it("should return all roles to which the user belongs.", function (done) {
+      expect(userRoles).toBeDefined();
+      // @todo More verifications needed!
+      done();
+    });
+  });
 
 });
 
