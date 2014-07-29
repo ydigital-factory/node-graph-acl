@@ -43,7 +43,7 @@ describe("Neo4jConnector.prototype.createNode:", function() {
       });
     });
 
-    it("should create a user with labels and properties", function (done) {
+    it("should create a node with labels and properties", function (done) {
       expect(testNode1).toBeDefined();
       expect(testNode1.p1).toEqual(properties1.p1);
       expect(testNode1.p2).toEqual(properties1.p2);
@@ -60,7 +60,7 @@ describe("Neo4jConnector.prototype.createNode:", function() {
       });
     });
 
-    it("should create a user without labels or properties", function (done) {
+    it("should create a node without labels or properties", function (done) {
       expect(testNode2).toBeDefined();
       expect(testNode2.p1).toEqual(undefined);
       expect(testNode2.p2).toEqual(undefined);
@@ -77,7 +77,7 @@ describe("Neo4jConnector.prototype.createNode:", function() {
       });
     });
 
-    it("should create a user with properties but without labels", function (done) {
+    it("should create a node with properties but without labels", function (done) {
       expect(testNode3).toBeDefined();
       expect(testNode3.p1).toEqual(properties1.p1);
       expect(testNode3.p2).toEqual(properties1.p2);
@@ -94,7 +94,7 @@ describe("Neo4jConnector.prototype.createNode:", function() {
       });
     });
 
-    it("should create a user with labels but without properties", function (done) {
+    it("should create a node with labels but without properties", function (done) {
       expect(testNode4).toBeDefined();
       expect(testNode4.p1).toEqual(undefined);
       expect(testNode4.p2).toEqual(undefined);
