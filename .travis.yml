@@ -1,11 +1,14 @@
 language: node_js
 node_js:
   - "0.10"
-#
-# Adapted from # https://github.com/versae/neo4j-rest-client/blob/master/.travis.yml
-#
+# Whenever neo4j version is updated to version 2, we can just put this
+#services:
+#  - neo4j
 before_install:
+  # grunt
   - npm install -g grunt-cli
+  # neo4j: forcing version 2
+  # Adapted from: https://github.com/versae/neo4j-rest-client/blob/master/.travis.yml
   - export NEO4J_PORT="7474"
   - sudo service neo4j stop || true
   - sleep 3
@@ -14,9 +17,9 @@ before_install:
   - curl http://localhost:$NEO4J_PORT/db/data/
   - curl -X DELETE 'http://localhost:7474/cleandb/supersecretdebugkey!'
 env:
+  # neo4j: forcing version 2
+  # Adapted from: https://github.com/versae/neo4j-rest-client/blob/master/.travis.yml
   - NEO4J_VERSION="2.0.4"
-#services:
-#  - neo4j
 install:
   - npm install
 before_script:
