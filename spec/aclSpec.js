@@ -65,131 +65,159 @@ var role2;
 var role3;
 
 // ACL.prototype.addUserRoles = function(userId, roles, callback)
-describe("Call addUserRoles with userID and a single role", function () {
-  var addSuccess;
-  beforeEach(function(done) {
-    testACL.addUserRoles('user1', 'group1', function(err, success) {
-      addSuccess = success;
+describe("ACL.prototype.addUserRoles:", function () {
+  describe("Call addUserRoles with userID and a single role", function () {
+    var addSuccess;
+    beforeEach(function(done) {
+      testACL.addUserRoles('user1', 'group1', function(err, success) {
+        addSuccess = success;
+        done();
+      });
+    });
+
+    it("should create a user, a role, and a relationship between them", function (done) {
+      expect(addSuccess).toBeDefined();
       done();
     });
   });
 
-  it("should create a user, a role, and a relationship between them", function (done) {
-    expect(addSuccess).toBeDefined();
-    done();
-  });
-});
+  describe("Call addUserRoles with userID and a 3 roles", function () {
+    var addSuccess;
+    beforeEach(function(done) {
+      testACL.addUserRoles('user2', ['group2', 'group3', 'group4'], function(err, success) {
+        addSuccess = success;
+        done();
+      });
+    });
 
-describe("Call addUserRoles with userID and a 3 roles", function () {
-  var addSuccess;
-  beforeEach(function(done) {
-    testACL.addUserRoles('user2', ['group2', 'group3', 'group4'], function(err, success) {
-      addSuccess = success;
+    it("should create a user, 3 roles, and relatinships between user and roles", function (done) {
+      expect(addSuccess).toBeDefined();
       done();
     });
-  });
-
-  it("should create a user, 3 roles, and relatinships between user and roles", function (done) {
-    expect(addSuccess).toBeDefined();
-    done();
   });
 });
 
 // ACL.prototype._createUser = function(userId, callback)
-describe("Call _createUser with userID", function () {
-  var createdUser;
-  beforeEach(function(done) {
-    testACL._createUser('user3', function(err, user) {
-      createdUser = user;
+describe("ACL.prototype._createUser:", function () {
+  describe("Call _createUser with userID", function () {
+    var createdUser;
+    beforeEach(function(done) {
+      testACL._createUser('user3', function(err, user) {
+        createdUser = user;
+        done();
+      });
+    });
+
+    it("should create a user", function (done) {
+      expect(createdUser).toBeDefined();
+      expect(createdUser.uid).toBe('user3');
       done();
     });
-  });
-
-  it("should create a user", function (done) {
-    expect(createdUser).toBeDefined();
-    expect(createdUser.uid).toBe('user3');
-    done();
   });
 });
 
 // ACL.prototype._createRole = function(roleId, callback)
-describe("Call _createRole with userID", function () {
-  var createdRole;
-  beforeEach(function(done) {
-    testACL._createRole('role5', function(err, role) {
-      createdRole = role;
+describe("ACL.prototype._createRole:", function () {
+  describe("Call _createRole with userID", function () {
+    var createdRole;
+    beforeEach(function(done) {
+      testACL._createRole('role5', function(err, role) {
+        createdRole = role;
+        done();
+      });
+    });
+
+    it("should create a role", function (done) {
+      expect(createdRole).toBeDefined();
+      expect(createdRole.rid).toBe('role5');
       done();
     });
   });
-
-  it("should create a role", function (done) {
-    expect(createdRole).toBeDefined();
-    expect(createdRole.rid).toBe('role5');
-    done();
-  });
 });
 
-
-
-
-
 // ACL.prototype.removeUserRoles = function(userId, roles, callback)
+describe("ACL.prototype.removeUserRoles:", function () {
+
+});
 
 
 
 
 // ACL.prototype.userRoles = function(userId, callback)
+describe("ACL.prototype.userRoles:", function () {
 
+});
 
 
 
 // ACL.prototype.addRoleParents = function(role, parents, callback)
+describe("ACL.prototype.addRoleParents:", function () {
 
+});
 
 
 
 // ACL.prototype.removeRole = function(role, callback)
+describe("ACL.prototype.removeRole:", function () {
 
+});
 
 
 
 // ACL.prototype.removeResource = function(resource, callback)
+describe("ACL.prototype.removeResource:", function () {
 
+});
 
 
 
 // ACL.prototype.allow = function(roles, resources, permissions, callback)
+describe("ACL.prototype.allow:", function () {
 
+});
 
 
 
 // ACL.prototype.removeAllow = function(role, resources, permissions, callback)
+describe("ACL.prototype.removeAllow:", function () {
 
+});
 
 
 
 // ACL.prototype.removePermissions = function(role, resources, permissions, callback)
+describe("ACL.prototype.removePermissions:", function () {
 
+});
 
 
 
 // ACL.prototype.allowedPermissions = function(userId, resources, callback)
+describe("ACL.prototype.allowedPermissions:", function () {
 
+});
 
 
 
 // ACL.prototype.isAllowed = function(userId, resource, permissions, callback)
+describe("ACL.prototype.isAllowed:", function () {
 
+});
 
 
 
 // ACL.prototype.areAnyRolesAllowed = function(roles, resource, permissions, callback)
+describe("ACL.prototype.areAnyRolesAllowed:", function () {
+
+});
 
 
 
 
 // ACL.prototype.whatResources = function(roles, permissions, callback)
+describe("ACL.prototype.whatResources:", function () {
 
+});
 
 
 
