@@ -776,7 +776,7 @@ describe("Neo4jConnector.prototype.removeNodeLabels:", function () {
       });
     });
 
-    it("should remove label from a given node", function (done) {
+    it("should remove label from node", function (done) {
       expect(removeSuccess).toEqual(true);
 
       // update test node info
@@ -787,6 +787,30 @@ describe("Neo4jConnector.prototype.removeNodeLabels:", function () {
       done();
     });
   });
+
+  describe("Call removeNodeLabels with a two labels", function () {
+    var removeSuccess;
+
+    beforeEach(function(done) {
+      testACL.connector.removeNodeLabels(testNode1._id, ['TestLabel1', 'TestLabel2'], function(err, success) {
+        removeSuccess = success;
+
+        done();
+      });
+    });
+
+    it("should remove labels from node", function (done) {
+      expect(removeSuccess).toEqual([true, true]);
+
+      // update test node info
+      testACL.connector.getNode(testNode1._id, function(err, node) {
+        testNode1 = node;
+      });
+
+      done();
+    });
+  });
+
 });
 
 // Neo4jConnector.prototype.startTransaction
