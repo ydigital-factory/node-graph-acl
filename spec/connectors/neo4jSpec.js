@@ -583,6 +583,51 @@ describe("Neo4jConnector.prototype.getNodeRelationships:", function () {
   });
 });
 
+//Neo4jConnector.prototype.getRelationshipsBetweenNodes = function (from, to, type, callback)
+describe("Neo4jConnector.prototype.getRelationshipsBetweenNodes:", function () {
+  describe("Call getRelationshipsBetweenNodes", function () {
+    var retrievedRelationships;
+
+    beforeEach(function(done) {
+      testACL.connector.getRelationshipsBetweenNodes(testNode1._id, testNode2._id, 'TEST', function(err, relationships) {
+        retrievedRelationships = relationships;
+
+        done();
+      });
+    });
+
+    it("should return relationships between the two nodes", function (done) {
+      expect(retrievedRelationships.p3).toEqual(properties2.p3);
+      expect(retrievedRelationships.p4).toEqual(properties2.p4);
+      expect(retrievedRelationships._type).toEqual('TEST');
+
+      //@todo: test with more than 1 relationship. Maybe in a different test
+
+      done();
+    });
+  });
+});
+
+//Neo4jConnector.prototype.existsRelationshipsBetweenNodes = function (from, to, type, callback)
+describe("Neo4jConnector.prototype.existsRelationshipsBetweenNodes:", function () {
+  describe("Call existsRelationshipsBetweenNodes", function () {
+    var existRelationships;
+
+    beforeEach(function(done) {
+      testACL.connector.existsRelationshipsBetweenNodes(testNode1._id, testNode2._id, 'TEST', function(err, exist) {
+        existRelationships = exist;
+
+        done();
+      });
+    });
+
+    it("should return true when relationship exists", function (done) {
+      expect(existRelationships).toEqual(true);
+      done();
+    });
+  });
+});
+
 // Neo4jConnector.prototype.addNodeProperties = function (nodeId, properties, callback)
 describe("Neo4jConnector.prototype.addNodeProperties:", function () {
   describe("Call addNodeProperties", function () {
