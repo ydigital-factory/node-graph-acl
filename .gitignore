@@ -1,6 +1,3 @@
-########################
-# node.js / npm
-########################
 lib-cov
 *.seed
 *.log
@@ -9,23 +6,11 @@ lib-cov
 *.out
 *.pid
 *.gz
-
 pids
 logs
 results
-
 node_modules
-
 npm-debug.log
-
-########################
-# JSDoc
-########################
-out
-
-########################
-# misc / editors
-########################
 *~
 *#
 .DS_STORE
