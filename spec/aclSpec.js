@@ -23,8 +23,6 @@ var labels2 = [
   'Label4'
 ];
 
-
-
 // Test properties
 var properties1 = {
   p1: 'test prop 1',
@@ -273,6 +271,26 @@ describe("ACL.prototype._createRole:", function () {
     it("should create a role", function (done) {
       expect(createdRole).toBeDefined();
       expect(createdRole.rid).toBe('role5');
+      done();
+    });
+  });
+});
+
+// ACL.prototype._createRelationship = function (nodeId1, nodeId2, type, callback)
+describe("ACL.prototype._createRelationship:", function () {
+  describe("Call _createRelationship with 2 nodes", function () {
+    var createdRelationship;
+    beforeEach(function(done) {
+      // @todo: create nodes and put those id's in next command
+      testACL._createRelationship(1792, 1793, 'BELONGS_TO', function(err, relationship) {
+        createdRelationship = relationship;
+        done();
+      });
+    });
+
+    it("should create a relationship between those nodes", function (done) {
+      expect(createdRelationship).toBeDefined();
+      // @todo more tests
       done();
     });
   });
