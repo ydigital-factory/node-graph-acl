@@ -67,7 +67,7 @@ describe("ACL.prototype.addUserRoles:", function () {
   describe("Call addUserRoles with userID and a single role", function () {
     var addSuccess;
 
-    beforeEach(function(done) {
+    beforeEach(function (done) {
       testACL.addUserRoles('user1', 'group1', function(err, success) {
         addSuccess = success;
         done();
@@ -81,7 +81,7 @@ describe("ACL.prototype.addUserRoles:", function () {
     });
   });
 
-  describe("Call addUserRoles with userID and a 3 roles", function () {
+  describe("Call addUserRoles with userID and 3 roles", function () {
     var addSuccess;
 
     beforeEach(function(done) {
@@ -91,7 +91,7 @@ describe("ACL.prototype.addUserRoles:", function () {
       });
     });
 
-    it("should create a user, 3 roles, and relatinships between user and roles.", function (done) {
+    it("should create a user, 3 roles, and relationships between user and roles.", function (done) {
       expect(addSuccess).toBeDefined();
       // @todo More verifications needed!
       done();
@@ -282,7 +282,7 @@ describe("ACL.prototype._createRelationship:", function () {
     var createdRelationship;
     beforeEach(function(done) {
       // @todo: create nodes and put those id's in next command
-      testACL._createRelationship(1792, 1793, 'BELONGS_TO', function(err, relationship) {
+      testACL._createRelationship(5933, 5934, 'BELONGS_TO', function(err, relationship) {
         createdRelationship = relationship;
         done();
       });
