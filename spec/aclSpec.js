@@ -188,6 +188,39 @@ describe("ACL.prototype.userRoles:", function () {
 
 // ACL.prototype.addRoleParents = function(role, parents, callback)
 describe("ACL.prototype.addRoleParents:", function () {
+  describe("Call addRoleParents with role and a single parent", function () {
+    var addSuccess;
+
+    beforeEach(function (done) {
+      testACL.addUserRoles('group10', 'group11', function(err, success) {
+        addSuccess = success;
+        done();
+      });
+    });
+
+    it("should create the role, the parent, and a relationship between them.", function (done) {
+      expect(addSuccess).toBeDefined();
+      // @todo More verifications needed!
+      done();
+    });
+  });
+
+  describe("Call addRoleParents with role and 3 parents", function () {
+    var addSuccess;
+
+    beforeEach(function (done) {
+      testACL.addUserRoles('group12', ['group13','group14','group15'], function(err, success) {
+        addSuccess = success;
+        done();
+      });
+    });
+
+    it("should create the role, 3 parents, and a relationship between them.", function (done) {
+      expect(addSuccess).toBeDefined();
+      // @todo More verifications needed!
+      done();
+    });
+  });
 
 });
 
@@ -299,7 +332,6 @@ describe("ACL.prototype._createRelationship:", function () {
     var createdRelationship;
 
     beforeEach(function(done) {
-      // @todo: create nodes and put those id's in next command
       testACL.connector.createNode(function (err, node1) {
         testACL.connector.createNode(function (err, node2) {
           testACL._createRelationship(node1._id, node2._id, 'BELONGS_TO', function(err, relationship) {
