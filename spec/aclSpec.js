@@ -81,6 +81,23 @@ describe("ACL.prototype.addUserRoles:", function () {
     });
   });
 
+  describe("Call addUserRoles with userID and a single role that already exist", function () {
+    var addSuccess;
+
+    beforeEach(function (done) {
+      testACL.addUserRoles('user1', 'group1', function(err, success) {
+        addSuccess = success;
+        done();
+      });
+    });
+
+    it("should not create them, but should return success.", function (done) {
+      expect(addSuccess).toBeDefined();
+      // @todo More verifications needed!
+      done();
+    });
+  });
+
   describe("Call addUserRoles with userID and 3 roles", function () {
     var addSuccess;
 
