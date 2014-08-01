@@ -297,11 +297,16 @@ describe("ACL.prototype._createRole:", function () {
 describe("ACL.prototype._createRelationship:", function () {
   describe("Call _createRelationship with 2 nodes", function () {
     var createdRelationship;
+
     beforeEach(function(done) {
       // @todo: create nodes and put those id's in next command
-      testACL._createRelationship(5933, 5934, 'BELONGS_TO', function(err, relationship) {
-        createdRelationship = relationship;
-        done();
+      testACL.connector.createNode(function (err, node1) {
+        testACL.connector.createNode(function (err, node2) {
+          testACL._createRelationship(node1._id, node2._id, 'BELONGS_TO', function(err, relationship) {
+            createdRelationship = relationship;
+            done();
+          });
+        });
       });
     });
 
