@@ -256,7 +256,31 @@ describe("ACL.prototype.removeRole:", function () {
 
 // ACL.prototype.removeResource = function(resource, callback)
 describe("ACL.prototype.removeResource:", function () {
+  //@todo: waiting for resource creation function before making this test
 
+  /*describe("Call removeResource with resource", function () {
+    var addSuccess;
+    var removeSuccess;
+
+    beforeEach(function (done) {
+      testACL.allow('group12', ['dashboard'], ['view', 'create', 'edit', 'erase'], function(err, success) {
+        //console.log(success);
+        addSuccess = success;
+        testACL.removeResource('dashboard', function(err, success2) {
+          //console.log(success2);
+          removeSuccess = success2;
+          done();
+        });
+      });
+    });
+
+    it("should remove resource and its relationships.", function (done) {
+      expect(addSuccess).toBeDefined();
+      expect(removeSuccess).toBeDefined();
+      // @todo More verifications needed!
+      done();
+    });
+  });*/
 });
 
 
