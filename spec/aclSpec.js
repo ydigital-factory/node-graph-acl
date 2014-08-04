@@ -252,43 +252,11 @@ describe("ACL.prototype.removeRole:", function () {
   });
 });
 
-
-
-// ACL.prototype.removeResource = function(resource, callback)
-describe("ACL.prototype.removeResource:", function () {
-  //@todo: waiting for resource creation function before making this test
-
-  /*describe("Call removeResource with resource", function () {
-    var addSuccess;
-    var removeSuccess;
-
-    beforeEach(function (done) {
-      testACL.allow('group12', ['dashboard'], ['view', 'create', 'edit', 'erase'], function(err, success) {
-        //console.log(success);
-        addSuccess = success;
-        testACL.removeResource('dashboard', function(err, success2) {
-          //console.log(success2);
-          removeSuccess = success2;
-          done();
-        });
-      });
-    });
-
-    it("should remove resource and its relationships.", function (done) {
-      expect(addSuccess).toBeDefined();
-      expect(removeSuccess).toBeDefined();
-      // @todo More verifications needed!
-      done();
-    });
-  });*/
-});
-
-
-
 // ACL.prototype.allow = function(roles, resources, permissions, callback)
 describe("ACL.prototype.allow:", function () {
 
 });
+
 
 
 
@@ -333,9 +301,38 @@ describe("ACL.prototype.whatResources:", function () {
 
 });
 
+// ACL.prototype.removeResource = function(resource, callback)
+describe("ACL.prototype.removeResource:", function () {
+  //@todo: waiting for resource creation function before making this test
+
+  /*describe("Call removeResource with resource", function () {
+    var addSuccess;
+    var removeSuccess;
+
+    beforeEach(function (done) {
+      testACL.allow('group12', ['dashboard'], ['view', 'create', 'edit', 'erase'], function(err, success) {
+        //console.log(success);
+        addSuccess = success;
+        testACL.removeResource('dashboard', function(err, success2) {
+          //console.log(success2);
+          removeSuccess = success2;
+          done();
+        });
+      });
+    });
+
+    it("should remove resource and its relationships.", function (done) {
+      expect(addSuccess).toBeDefined();
+      expect(removeSuccess).toBeDefined();
+      // @todo More verifications needed!
+      done();
+    });
+  });*/
+});
+
 // ACL.prototype._createUser = function(userId, callback)
 describe("ACL.prototype._createUser:", function () {
-  describe("Call _createUser with userID", function () {
+  describe("Call _createUser with user ID", function () {
     var createdUser;
     beforeEach(function(done) {
       testACL._createUser('user3', function(err, user) {
@@ -354,7 +351,7 @@ describe("ACL.prototype._createUser:", function () {
 
 // ACL.prototype._createRole = function(roleId, callback)
 describe("ACL.prototype._createRole:", function () {
-  describe("Call _createRole with userID", function () {
+  describe("Call _createRole with role ID", function () {
     var createdRole;
     beforeEach(function(done) {
       testACL._createRole('role5', function(err, role) {
@@ -366,6 +363,25 @@ describe("ACL.prototype._createRole:", function () {
     it("should create a role", function (done) {
       expect(createdRole).toBeDefined();
       expect(createdRole.rid).toBe('role5');
+      done();
+    });
+  });
+});
+
+// ACL.prototype._createResource = function(resourceId, callback)
+describe("ACL.prototype._createResource:", function () {
+  describe("Call _createResource with resource ID", function () {
+    var createdResource;
+    beforeEach(function(done) {
+      testACL._createResource('resource15', function(err, resource) {
+        createdResource = resource;
+        done();
+      });
+    });
+
+    it("should create a resource", function (done) {
+      expect(createdResource).toBeDefined();
+      expect(createdResource.rsid).toBe('resource15');
       done();
     });
   });
