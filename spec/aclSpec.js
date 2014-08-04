@@ -254,7 +254,22 @@ describe("ACL.prototype.removeRole:", function () {
 
 // ACL.prototype.allow = function(roles, resources, permissions, callback)
 describe("ACL.prototype.allow:", function () {
+  describe("Call allow with 2 roles, 2 resources, and 3 permissions", function () {
+    var createdRelationships;
 
+    beforeEach(function (done) {
+      testACL.allow(['role30', 'role40'], ['resource50', 'resource60'], ['create', 'edit', 'erase', 'view'], function(err, relationships) {
+        createdRelationships = relationships;
+        done();
+      });
+    });
+
+    it("should create roles, resources, and relationships with those permissions.", function (done) {
+      expect(createdRelationships).toBeDefined();
+      // @todo More verifications needed!
+      done();
+    });
+  });
 });
 
 
