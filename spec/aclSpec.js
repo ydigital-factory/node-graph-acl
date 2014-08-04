@@ -254,7 +254,7 @@ describe("ACL.prototype.removeRole:", function () {
 
 // ACL.prototype.allow = function(roles, resources, permissions, callback)
 describe("ACL.prototype.allow:", function () {
-  describe("Call allow with 2 roles, 2 resources, and 3 permissions", function () {
+  describe("Call allow with 2 roles, 2 resources, and 4 permissions", function () {
     var createdRelationships;
 
     beforeEach(function (done) {
@@ -272,12 +272,24 @@ describe("ACL.prototype.allow:", function () {
   });
 });
 
-
-
-
 // ACL.prototype.removeAllow = function(role, resources, permissions, callback)
 describe("ACL.prototype.removeAllow:", function () {
+  describe("Call removeAllow with a role, 2 resources, and 2 permissions", function () {
+    var createdRelationships;
 
+    beforeEach(function (done) {
+      testACL.removeAllow('role30', ['resource50', 'resource60'], ['edit', 'erase'], function(err, relationships) {
+        createdRelationships = relationships;
+        done();
+      });
+    });
+
+    it("should remove those permissions from the relationship between the role and the resources.", function (done) {
+      expect(createdRelationships).toBeDefined();
+      // @todo More verifications needed!
+      done();
+    });
+  });
 });
 
 
