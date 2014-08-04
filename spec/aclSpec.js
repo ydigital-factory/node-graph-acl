@@ -225,10 +225,31 @@ describe("ACL.prototype.addRoleParents:", function () {
 });
 
 
-
 // ACL.prototype.removeRole = function(role, callback)
 describe("ACL.prototype.removeRole:", function () {
+  describe("Call removeRole with role", function () {
+    var addSuccess;
+    var removeSuccess;
 
+    beforeEach(function (done) {
+      testACL.addUserRoles('group12', ['group13','group14','group15'], function(err, success) {
+        //console.log(success);
+        addSuccess = success;
+        testACL.removeRole('group13', function(err, success2) {
+          //console.log(success2);
+          removeSuccess = success2;
+          done();
+        });
+      });
+    });
+
+    it("should remove role and its relationships.", function (done) {
+      expect(addSuccess).toBeDefined();
+      expect(removeSuccess).toBeDefined();
+      // @todo More verifications needed!
+      done();
+    });
+  });
 });
 
 
