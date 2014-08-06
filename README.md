@@ -23,6 +23,8 @@ testACL.allow('admin', 'dashboard', ['create', 'read', 'update', 'delete'], func
 
 ## Install
 
+It's not on npm yet, but when it is, you'll just have to:
+
 ```
 npm install node-graph-acl
 ```
@@ -31,24 +33,48 @@ npm install node-graph-acl
 
 ### addUserRoles (userId, roles, callback)
 
+done
+
 ### removeUserRoles (userId, roles, callback)
+
+done
 
 ### userRoles (userId, callback)
 
+done
+
 ### addRoleParents (role, parents, callback)
+
+done
 
 ### removeRole (roleId, callback)
 
+done
+
 ### allow (roles, resources, permissions, callback)
+
+done
 
 ### removeAllow (role, resources, permissions, callback)
 
+done
+
 ### allowedPermissions (userId, resources, callback)
+
+in progress
 
 ### isAllowed (userId, resource, permissions, callback)
 
+in progress
+
 ### areAnyRolesAllowed (roles, resource, permissions, callback)
+
+in progress
 
 ### whatResources (roles, permissions, callback)
 
+in progress
+
 ### removeResource (resourceId, callback)
+
+done
