@@ -873,6 +873,31 @@ describe("Neo4jConnector.prototype.removeNodeLabels:", function () {
 
 
 
+describe("Neo4jConnector.prototype._getParameters:", function() {
+  describe("Call _getParameters on a created node", function () {
+    var retrievedParameters;
+
+    beforeEach(function(done) {
+      testACL.connector.createNode(labels1, properties1, function(err, createdNode) {
+        testACL.connector._getParameters(createdNode, function (err, parameters){
+          retrievedParameters = parameters;
+          done();
+        });
+      });
+    });
+
+    it("should return only the parameters that don't start with _.", function (done) {
+      expect(retrievedParameters).toBeDefined();
+      expect(retrievedParameters.p1).toBeDefined();
+      expect(retrievedParameters.p2).toBeDefined();
+      expect(retrievedParameters._id).not.toBeDefined();
+      // @todo Check if labels were inserted
+      done();
+    });
+  });
+});
+
+
 
 // After all tests, delete nodes created for testing
 // Doesn't work yet
