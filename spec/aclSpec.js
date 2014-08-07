@@ -368,7 +368,7 @@ describe("ACL.prototype._createUser:", function () {
       });
     });
 
-    it("should create a user", function (done) {
+    it("should create a user.", function (done) {
       expect(createdUser).toBeDefined();
       expect(createdUser.uid).toBe('user3');
       done();
@@ -387,7 +387,7 @@ describe("ACL.prototype._createRole:", function () {
       });
     });
 
-    it("should create a role", function (done) {
+    it("should create a role.", function (done) {
       expect(createdRole).toBeDefined();
       expect(createdRole.rid).toBe('role5');
       done();
@@ -406,7 +406,7 @@ describe("ACL.prototype._createResource:", function () {
       });
     });
 
-    it("should create a resource", function (done) {
+    it("should create a resource.", function (done) {
       expect(createdResource).toBeDefined();
       expect(createdResource.rsid).toBe('resource15');
       done();
@@ -430,7 +430,7 @@ describe("ACL.prototype._createRelationship:", function () {
       });
     });
 
-    it("should create a relationship between those nodes", function (done) {
+    it("should create a relationship between those nodes.", function (done) {
       expect(createdRelationship).toBeDefined();
       // @todo more tests
       done();

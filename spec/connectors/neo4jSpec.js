@@ -43,7 +43,7 @@ describe("Neo4jConnector.prototype.createNode:", function() {
       });
     });
 
-    it("should create a node with labels and properties", function (done) {
+    it("should create a node with labels and properties.", function (done) {
       expect(testNode1).toBeDefined();
       expect(testNode1.p1).toEqual(properties1.p1);
       expect(testNode1.p2).toEqual(properties1.p2);
@@ -60,7 +60,7 @@ describe("Neo4jConnector.prototype.createNode:", function() {
       });
     });
 
-    it("should create a node without labels or properties", function (done) {
+    it("should create a node without labels or properties.", function (done) {
       expect(testNode2).toBeDefined();
       expect(testNode2.p1).toEqual(undefined);
       expect(testNode2.p2).toEqual(undefined);
@@ -77,7 +77,7 @@ describe("Neo4jConnector.prototype.createNode:", function() {
       });
     });
 
-    it("should create a node with properties but without labels", function (done) {
+    it("should create a node with properties but without labels.", function (done) {
       expect(testNode3).toBeDefined();
       expect(testNode3.p1).toEqual(properties1.p1);
       expect(testNode3.p2).toEqual(properties1.p2);
@@ -94,7 +94,7 @@ describe("Neo4jConnector.prototype.createNode:", function() {
       });
     });
 
-    it("should create a node with labels but without properties", function (done) {
+    it("should create a node with labels but without properties.", function (done) {
       expect(testNode4).toBeDefined();
       expect(testNode4.p1).toEqual(undefined);
       expect(testNode4.p2).toEqual(undefined);
@@ -116,7 +116,7 @@ describe("Neo4jConnector.prototype.getNode:", function () {
       });
     });
 
-    it("should retrieve given node", function (done) {
+    it("should retrieve given node.", function (done) {
       expect(testNode4).toEqual(retrievedNode);
       done();
     });
@@ -135,7 +135,7 @@ describe("Neo4jConnector.prototype.getNodesWithLabel:", function () {
       });
     });
 
-    it("should retrieve all nodes with given label", function (done) {
+    it("should retrieve all nodes with given label.", function (done) {
       expect(retrievedNodes.length).toBeGreaterThan(0);
       //expect(testNode1._id).toEqual(retrievedNodes[0]._id);
       //expect(testNode4._id).toEqual(retrievedNodes[1]._id);
@@ -152,7 +152,7 @@ describe("Neo4jConnector.prototype.getNodesWithLabel:", function () {
       });
     });
 
-    it("should not retrieve nodes", function (done) {
+    it("should not retrieve nodes.", function (done) {
       expect(retrievedNodes.length).toBe(0);
       done();
     });
@@ -210,7 +210,7 @@ describe("Neo4jConnector.prototype.getNodesWithLabelsAndProperties:", function (
       });
     });
 
-    it("should retrieve all nodes with given label", function (done) {
+    it("should retrieve all nodes with given label.", function (done) {
       expect(retrievedNodes.length).toBeGreaterThan(0);
       //expect(testNode1._id).toEqual(retrievedNodes[0]._id);
       //expect(testNode4._id).toEqual(retrievedNodes[1]._id);
@@ -228,7 +228,7 @@ describe("Neo4jConnector.prototype.getNodesWithLabelsAndProperties:", function (
       });
     });
 
-    it("should not retrieve nodes", function (done) {
+    it("should not retrieve nodes.", function (done) {
       expect(retrievedNodes.length).toBe(0);
       done();
     });
@@ -247,7 +247,7 @@ describe("Neo4jConnector.prototype.existsNodeWithLabel:", function () {
       });
     });
 
-    it("should return true", function (done) {
+    it("should return true.", function (done) {
       expect(existsNode).toBe(true);
       done();
     });
@@ -263,7 +263,7 @@ describe("Neo4jConnector.prototype.existsNodeWithLabel:", function () {
       });
     });
 
-    it("should return false", function (done) {
+    it("should return false.", function (done) {
       expect(existsNode).toBe(false);
       done();
     });
@@ -283,7 +283,7 @@ describe("Neo4jConnector.prototype.existsNodeWithProperties:", function () {
       });
     });
 
-    it("should return true", function (done) {
+    it("should return true.", function (done) {
       expect(existsNode).toBe(true);
       done();
     });
@@ -299,7 +299,7 @@ describe("Neo4jConnector.prototype.existsNodeWithProperties:", function () {
       });
     });
 
-    it("should return false", function (done) {
+    it("should return false.", function (done) {
       expect(existsNode).toBe(false);
       done();
     });
@@ -319,7 +319,7 @@ describe("Neo4jConnector.prototype.existsNodeWithLabelsAndProperties:", function
       });
     });
 
-    it("should return true", function (done) {
+    it("should return true.", function (done) {
       expect(existsNode).toBe(true);
       done();
     });
@@ -335,7 +335,7 @@ describe("Neo4jConnector.prototype.existsNodeWithLabelsAndProperties:", function
       });
     });
 
-    it("should return false", function (done) {
+    it("should return false.", function (done) {
       expect(existsNode).toBe(false);
       done();
     });
@@ -359,7 +359,7 @@ describe("Neo4jConnector.prototype.updateNode:", function () {
         });
     });
 
-    it("should update labels and properties of a node:", function (done) {
+    it("should update labels and properties of a node.", function (done) {
       expect(updateSuccess).toBeDefined();
       expect(updateSuccess.updateProperties).toEqual(true);
       expect(updateSuccess.updateLabels).toEqual(true);
@@ -396,7 +396,7 @@ describe("Neo4jConnector.prototype.deleteNode:", function () {
       });
     });
 
-    it("should delete chosen node", function (done) {
+    it("should delete chosen node.", function (done) {
       expect(success).toBeDefined();
       expect(success).toEqual(true);
       expect(createdNode).not.toEqual(deletedNode);
@@ -418,7 +418,7 @@ describe("Neo4jConnector.prototype.getNodeProperties:", function () {
       });
     });
 
-    it("should retrieve given node properties", function (done) {
+    it("should retrieve given node properties.", function (done) {
       expect(properties2).toEqual(retrievedProperties);
       done();
     });
@@ -445,7 +445,7 @@ describe("Neo4jConnector.prototype.addRelationship:", function () {
       });
     });
 
-    it("should create that relationship", function (done) {
+    it("should create that relationship.", function (done) {
       expect(testRelationship1).toEqual(retrievedRelationship);
       done();
     });
@@ -465,7 +465,7 @@ describe("Neo4jConnector.prototype.getRelationship:", function () {
       });
     });
 
-    it("should return that relationship", function (done) {
+    it("should return that relationship.", function (done) {
       expect(testRelationship1).toEqual(retrievedRelationship);
       done();
     });
@@ -490,7 +490,7 @@ describe("Neo4jConnector.prototype.updateRelationship:", function () {
       });
     });
 
-    it("should update that relationship", function (done) {
+    it("should update that relationship.", function (done) {
       expect(updatedRelationship).toEqual(true);
       expect(retrievedRelationship).not.toEqual(testRelationship1);
       expect(retrievedRelationship.p3).toEqual(properties2.p3);
@@ -527,7 +527,7 @@ describe("Neo4jConnector.prototype.removeRelationship:", function () {
       });
     });
 
-    it("should remove that relationship", function (done) {
+    it("should remove that relationship.", function (done) {
       expect(removeSuccess).toEqual(true);
       done();
     });
@@ -547,7 +547,7 @@ describe("Neo4jConnector.prototype.getRelationshipProperties:", function () {
       });
     });
 
-    it("should return that relationship properties", function (done) {
+    it("should return that relationship properties.", function (done) {
       expect(properties2).toEqual(retrievedProperties);
       done();
     });
@@ -571,7 +571,7 @@ describe("Neo4jConnector.prototype.getNodeRelationships:", function () {
       });
     });
 
-    it("should return that node relationships", function (done) {
+    it("should return that node relationships.", function (done) {
       expect(retrievedRelationships[0].p3).toEqual(properties2.p3);
       expect(retrievedRelationships[0].p4).toEqual(properties2.p4);
       expect(retrievedRelationships[0]._type).toEqual('TEST');
@@ -596,7 +596,7 @@ describe("Neo4jConnector.prototype.getRelationshipsBetweenNodes:", function () {
       });
     });
 
-    it("should return relationships between the two nodes", function (done) {
+    it("should return relationships between the two nodes.", function (done) {
       expect(retrievedRelationships.p3).toEqual(properties2.p3);
       expect(retrievedRelationships.p4).toEqual(properties2.p4);
       expect(retrievedRelationships._type).toEqual('TEST');
@@ -621,7 +621,7 @@ describe("Neo4jConnector.prototype.existsRelationshipsBetweenNodes:", function (
       });
     });
 
-    it("should return true when relationship exists", function (done) {
+    it("should return true when relationship exists.", function (done) {
       expect(existRelationships).toEqual(true);
       done();
     });
@@ -641,7 +641,7 @@ describe("Neo4jConnector.prototype.addNodeProperties:", function () {
       });
     });
 
-    it("should add properties to node", function (done) {
+    it("should add properties to node.", function (done) {
       expect(updateSuccess.updateProperties).toEqual(true);
       expect(updateSuccess.updateLabels).toEqual(true);
 
@@ -664,7 +664,7 @@ describe("Neo4jConnector.prototype.updateNodeProperties:", function () {
     });
 
 
-    it("should update node with new properties", function (done) {
+    it("should update node with new properties.", function (done) {
       expect(updateSuccess.updateProperties).toEqual(true);
       expect(updateSuccess.updateLabels).toEqual(true);
 
@@ -687,7 +687,7 @@ describe("Neo4jConnector.prototype.removeNodeProperties:", function () {
     });
 
 
-    it("should remove properties from node", function (done) {
+    it("should remove properties from node.", function (done) {
       expect(updateSuccess.updateProperties).toEqual(true);
       expect(updateSuccess.updateLabels).toEqual(true);
 
@@ -709,7 +709,7 @@ describe("Neo4jConnector.prototype.addRelationshipProperties:", function () {
       });
     });
 
-    it("should add properties to relationship", function (done) {
+    it("should add properties to relationship.", function (done) {
       expect(updateSuccess).toEqual(true);
 
       done();
@@ -731,7 +731,7 @@ describe("Neo4jConnector.prototype.updateRelationshipProperties:", function () {
     });
 
 
-    it("should update relationship with new properties", function (done) {
+    it("should update relationship with new properties.", function (done) {
       expect(updateSuccess).toEqual(true);
 
       done();
@@ -753,7 +753,7 @@ describe("Neo4jConnector.prototype.removeRelationshipProperties:", function () {
     });
 
 
-    it("should remove properties from relationship", function (done) {
+    it("should remove properties from relationship.", function (done) {
       expect(updateSuccess).toEqual(true);
 
       done();
@@ -774,7 +774,7 @@ describe("Neo4jConnector.prototype.getNodeLabels:", function () {
       });
     });
 
-    it("should return that node labels", function (done) {
+    it("should return that node labels.", function (done) {
       expect(retrievedLabels).toEqual(labels1);
 
       done();
@@ -795,7 +795,7 @@ describe("Neo4jConnector.prototype.addNodeLabels:", function () {
       });
     });
 
-    it("should add labels to the given node", function (done) {
+    it("should add labels to the given node.", function (done) {
       expect(addSuccess).toEqual(true);
 
       // update test node info
@@ -821,7 +821,7 @@ describe("Neo4jConnector.prototype.removeNodeLabels:", function () {
       });
     });
 
-    it("should remove label from node", function (done) {
+    it("should remove label from node.", function (done) {
       expect(removeSuccess).toEqual(true);
 
       // update test node info
@@ -844,7 +844,7 @@ describe("Neo4jConnector.prototype.removeNodeLabels:", function () {
       });
     });
 
-    it("should remove labels from node", function (done) {
+    it("should remove labels from node.", function (done) {
       expect(removeSuccess).toEqual([true, true]);
 
       // update test node info
