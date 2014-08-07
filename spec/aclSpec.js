@@ -292,7 +292,6 @@ describe("ACL.prototype.removeAllow:", function () {
   });
 });
 
-
 // ACL.prototype.allowedPermissions = function(userId, resources, callback)
 describe("ACL.prototype.allowedPermissions:", function () {
   describe("Call allowedPermissions with a user and 2 resources", function () {
@@ -321,23 +320,99 @@ describe("ACL.prototype.allowedPermissions:", function () {
   });
 });
 
-
-// ACL.prototype.removePermissions = function(role, resources, permissions, callback)
-describe("ACL.prototype.removePermissions:", function () {
-});
-
-
-
-// ACL.prototype.allowedPermissions = function(userId, resources, callback)
-describe("ACL.prototype.allowedPermissions:", function () {
-
-});
-
-
-
 // ACL.prototype.isAllowed = function(userId, resource, permissions, callback)
 describe("ACL.prototype.isAllowed:", function () {
+  describe("Call isAllowed with a user, 2 valid resources, and 2 valid permissions", function () {
+    var permissionSuccess;
 
+    beforeEach(function (done) {
+      testACL.allow('admin', 'dashboard', ['create', 'read', 'update', 'delete'], function(err, createdRelationships1) {
+        testACL.allow('admin', 'campaigns', ['create', 'read', 'update', 'delete'], function(err, createdRelationships2) {
+          testACL.addUserRoles('test_user', 'admin', function(err, addSuccess) {
+            testACL.isAllowed('test_user', ['campaigns', 'reports'], ['read', 'delete'], function(err, isSuccess) {
+              permissionSuccess = isSuccess;
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    it("should return true.", function (done) {
+      expect(permissionSuccess).toBeDefined();
+      expect(permissionSuccess).toBe(true);
+      done();
+    });
+  });
+
+  describe("Call isAllowed with a user, 1 valid resource, and 1 valid permission", function () {
+    var permissionSuccess;
+
+    beforeEach(function (done) {
+      testACL.allow('admin', 'dashboard', ['create', 'read', 'update', 'delete'], function(err, createdRelationships1) {
+        testACL.allow('admin', 'campaigns', ['create', 'read', 'update', 'delete'], function(err, createdRelationships2) {
+          testACL.addUserRoles('test_user', 'admin', function(err, addSuccess) {
+            testACL.isAllowed('test_user', 'reports', 'read', function(err, isSuccess) {
+              permissionSuccess = isSuccess;
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    it("should return true.", function (done) {
+      expect(permissionSuccess).toBeDefined();
+      expect(permissionSuccess).toBe(true);
+      done();
+    });
+  });
+
+  describe("Call isAllowed with a user, 1 valid resource, and 1 invalid permission", function () {
+    var permissionSuccess;
+
+    beforeEach(function (done) {
+      testACL.allow('admin', 'dashboard', ['create', 'read', 'update', 'delete'], function(err, createdRelationships1) {
+        testACL.allow('admin', 'campaigns', ['create', 'read', 'update', 'delete'], function(err, createdRelationships2) {
+          testACL.addUserRoles('test_user', 'admin', function(err, addSuccess) {
+            testACL.isAllowed('test_user', 'reports', 'invalid', function(err, isSuccess) {
+              permissionSuccess = isSuccess;
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    it("should return false.", function (done) {
+      expect(permissionSuccess).toBeDefined();
+      expect(permissionSuccess).toBe(false);
+      done();
+    });
+  });
+
+  describe("Call isAllowed with a user, 1 invalid resource, and 1 invalid permission", function () {
+    var permissionSuccess;
+
+    beforeEach(function (done) {
+      testACL.allow('admin', 'dashboard', ['create', 'read', 'update', 'delete'], function(err, createdRelationships1) {
+        testACL.allow('admin', 'campaigns', ['create', 'read', 'update', 'delete'], function(err, createdRelationships2) {
+          testACL.addUserRoles('test_user', 'admin', function(err, addSuccess) {
+            testACL.isAllowed('test_user', 'invalid', 'invalid', function(err, isSuccess) {
+              permissionSuccess = isSuccess;
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    it("should return false.", function (done) {
+      expect(permissionSuccess).toBeDefined();
+      expect(permissionSuccess).toBe(false);
+      done();
+    });
+  });
 });
 
 
