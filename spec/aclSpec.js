@@ -293,10 +293,37 @@ describe("ACL.prototype.removeAllow:", function () {
 });
 
 
+// ACL.prototype.allowedPermissions = function(userId, resources, callback)
+describe("ACL.prototype.allowedPermissions:", function () {
+  describe("Call allowedPermissions with a user and 2 resources", function () {
+    var retrievedPermissions;
+
+    beforeEach(function (done) {
+      testACL.allow('admin', 'dashboard', ['create', 'read', 'update', 'delete'], function(err, createdRelationships1) {
+        testACL.allow('admin', 'campaigns', ['create', 'read', 'update', 'delete'], function(err, createdRelationships2) {
+          testACL.addUserRoles('test_user', 'admin', function(err, addSuccess) {
+            testACL.allowedPermissions('test_user', ['dashboard', 'campaigns'], function(err, permissions) {
+              retrievedPermissions = permissions;
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    it("should return an array of objects identifying the user permissions.", function (done) {
+      expect(retrievedPermissions).toBeDefined();
+      //expect(retrievedPermissions).toBe([{'campaigns': ['update', 'delete', 'read', 'create']},
+      //                                   {'dashboard': ['update', 'delete', 'read', 'create']}]);
+      // @todo More verifications needed!
+      done();
+    });
+  });
+});
+
 
 // ACL.prototype.removePermissions = function(role, resources, permissions, callback)
 describe("ACL.prototype.removePermissions:", function () {
-
 });
 
 
