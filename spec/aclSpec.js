@@ -329,7 +329,7 @@ describe("ACL.prototype.isAllowed:", function () {
       testACL.allow('admin', 'dashboard', ['create', 'read', 'update', 'delete'], function(err, createdRelationships1) {
         testACL.allow('admin', 'campaigns', ['create', 'read', 'update', 'delete'], function(err, createdRelationships2) {
           testACL.addUserRoles('test_user', 'admin', function(err, addSuccess) {
-            testACL.isAllowed('test_user', ['campaigns', 'reports'], ['read', 'delete'], function(err, isSuccess) {
+            testACL.isAllowed('test_user', ['campaigns', 'dashboard'], ['read', 'delete'], function(err, isSuccess) {
               permissionSuccess = isSuccess;
               done();
             });
@@ -350,12 +350,10 @@ describe("ACL.prototype.isAllowed:", function () {
 
     beforeEach(function (done) {
       testACL.allow('admin', 'dashboard', ['create', 'read', 'update', 'delete'], function(err, createdRelationships1) {
-        testACL.allow('admin', 'campaigns', ['create', 'read', 'update', 'delete'], function(err, createdRelationships2) {
-          testACL.addUserRoles('test_user', 'admin', function(err, addSuccess) {
-            testACL.isAllowed('test_user', 'reports', 'read', function(err, isSuccess) {
-              permissionSuccess = isSuccess;
-              done();
-            });
+        testACL.addUserRoles('test_user', 'admin', function(err, addSuccess) {
+          testACL.isAllowed('test_user', 'dashboard', 'read', function(err, isSuccess) {
+            permissionSuccess = isSuccess;
+            done();
           });
         });
       });
