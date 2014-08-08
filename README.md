@@ -206,7 +206,7 @@ acl.isAllowed('user1', ['resource1', 'resource2'], ['permission1', 'permission2'
 
 ### areAnyRolesAllowed (roles, resource, permissions, callback)
 
-Check if the role(s) have permission(s) on the resource(s).
+Check if any of the role(s) have permission(s) on the resource(s).
 
 __Parameters:__
 * roles (String|Array): Role(s) ids to check the permissions for.
