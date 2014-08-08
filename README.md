@@ -251,8 +251,3 @@ __Examples:__
 ```
 acl.removeResource('resource1', callback);
 ```
-
-
-
-
-###
