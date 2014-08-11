@@ -456,13 +456,31 @@ describe("ACL.prototype.areAnyRolesAllowed:", function () {
       done();
     });
   });
-
-
 });
 
 // ACL.prototype.whatResources = function(roles, permissions, callback)
 describe("ACL.prototype.whatResources:", function () {
-  
+  describe("Call whatResources with 1 role", function () {
+    var validResources;
+
+    beforeEach(function (done) {
+      testACL.allow('test', 'dashboard', ['create', 'read', 'update', 'delete'], function(err, createdRelationships1) {
+        testACL.allow('test', 'campaigns', ['create', 'read', 'update', 'delete'], function(err, createdRelationships2) {
+          testACL.whatResources('test', function(err, resources) {
+            validResources = resources;
+            done();
+          });
+        });
+      });
+    });
+
+    it("should return false.", function (done) {
+      expect(validResources).toBeDefined();
+      expect(validResources).toBeDefined(validResources.dashboard);
+      expect(validResources).toBeDefined(validResources.campaigns);
+      done();
+    });
+  });
 });
 
 // ACL.prototype.removeResource = function(resource, callback)
