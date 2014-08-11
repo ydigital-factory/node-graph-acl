@@ -413,19 +413,56 @@ describe("ACL.prototype.isAllowed:", function () {
   });
 });
 
-
-
 // ACL.prototype.areAnyRolesAllowed = function(roles, resource, permissions, callback)
 describe("ACL.prototype.areAnyRolesAllowed:", function () {
+  describe("Call areAnyRolesAllowed with 2 roles, 1 resource, and 2 permissions", function () {
+    var permissionSuccess;
+
+    beforeEach(function (done) {
+      testACL.allow('admin', 'dashboard', ['create', 'read', 'update', 'delete'], function(err, createdRelationships1) {
+        testACL.allow('test', 'campaigns', ['create', 'read', 'update', 'delete'], function(err, createdRelationships2) {
+          testACL.areAnyRolesAllowed(['test', 'admin'], 'dashboard', ['read', 'create'], function(err, isSuccess) {
+            permissionSuccess = isSuccess;
+            done();
+          });
+        });
+      });
+    });
+
+    it("should return true.", function (done) {
+      expect(permissionSuccess).toBeDefined();
+      expect(permissionSuccess).toBe(true);
+      done();
+    });
+  });
+
+  describe("Call areAnyRolesAllowed with 2 roles, 1 resource, and 2 invalid permissions", function () {
+    var permissionSuccess;
+
+    beforeEach(function (done) {
+      testACL.allow('admin', 'dashboard', ['create', 'read', 'update', 'delete'], function(err, createdRelationships1) {
+        testACL.allow('test', 'campaigns', ['create', 'read', 'update', 'delete'], function(err, createdRelationships2) {
+          testACL.areAnyRolesAllowed(['test', 'admin'], 'dashboard', ['read_not', 'create_not'], function(err, isSuccess) {
+            permissionSuccess = isSuccess;
+            done();
+          });
+        });
+      });
+    });
+
+    it("should return false.", function (done) {
+      expect(permissionSuccess).toBeDefined();
+      expect(permissionSuccess).toBe(false);
+      done();
+    });
+  });
+
 
 });
 
-
-
-
 // ACL.prototype.whatResources = function(roles, permissions, callback)
 describe("ACL.prototype.whatResources:", function () {
-
+  
 });
 
 // ACL.prototype.removeResource = function(resource, callback)
