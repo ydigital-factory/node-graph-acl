@@ -15,7 +15,7 @@ var acl = require('graph-acl');
 var db = new neo4j('http://localhost:7474');
 var myACL = new acl(new acl.neo4jConnector(db));
 
-testACL.allow('admin', 'dashboard', ['create', 'read', 'update', 'delete'], function (err, success) {
+myACL.allow('admin', 'dashboard', ['create', 'read', 'update', 'delete'], function (err, success) {
   // Do something
 });
 
@@ -56,8 +56,8 @@ __Parameters:__
 
 __Examples:__
 ```
-acl.addUserRoles('user1', 'role1', callback);
-acl.addUserRoles('user1', ['role1', 'role2'], callback);
+myACL.addUserRoles('user1', 'role1', callback);
+myACL.addUserRoles('user1', ['role1', 'role2'], callback);
 ```
 
 ### removeUserRoles (userId, roles, callback)
@@ -71,8 +71,8 @@ __Parameters:__
 
 __Examples:__
 ```
-acl.removeUserRoles('user1', 'role1', callback);
-acl.removeUserRoles('user1', ['role1', 'role2'], callback);
+myACL.removeUserRoles('user1', 'role1', callback);
+myACL.removeUserRoles('user1', ['role1', 'role2'], callback);
 ```
 
 ### userRoles (userId, callback)
@@ -85,7 +85,7 @@ __Parameters:__
 
 __Examples:__
 ```
-acl.userRoles('user1', callback);
+myACL.userRoles('user1', callback);
 ```
 
 ### addRoleParents (role, parents, callback)
@@ -99,8 +99,8 @@ __Parameters:__
 
 __Examples:__
 ```
-acl.addRoleParents('role1', 'role2', callback);
-acl.addRoleParents('role1', ['role2', 'role3'], callback);
+myACL.addRoleParents('role1', 'role2', callback);
+myACL.addRoleParents('role1', ['role2', 'role3'], callback);
 ```
 
 ### removeRole (roleId, callback)
@@ -113,7 +113,7 @@ __Parameters:__
 
 __Examples:__
 ```
-acl.removeRole('role1', callback);
+myACL.removeRole('role1', callback);
 ```
 
 ### allow (roles, resources, permissions, callback)
@@ -129,8 +129,8 @@ __Parameters:__
 
 __Examples:__
 ```
-acl.allow('role1', 'resource1', 'permission1', callback);
-acl.allow(['role1', 'role2'], ['resource1', 'resource1'], ['permission1', 'permission2'], callback);
+myACL.allow('role1', 'resource1', 'permission1', callback);
+myACL.allow(['role1', 'role2'], ['resource1', 'resource1'], ['permission1', 'permission2'], callback);
 
 @todo:
 var permissionsArray = [
@@ -149,7 +149,7 @@ var permissionsArray = [
     ]
   },
 ];
-acl.allow(permissionsArray, callback);
+myACL.allow(permissionsArray, callback);
 ```
 
 ### removeAllow (role, resources, permissions, callback)
@@ -164,8 +164,8 @@ __Parameters:__
 
 __Examples:__
 ```
-acl.removeAllow('role1', 'resource1', 'permission1', callback);
-acl.removeAllow('role1', ['resource1', 'resource2'], ['permission1', 'permission2'], callback);
+myACL.removeAllow('role1', 'resource1', 'permission1', callback);
+myACL.removeAllow('role1', ['resource1', 'resource2'], ['permission1', 'permission2'], callback);
 ```
 
 ### allowedPermissions (userId, resources, callback)
@@ -184,8 +184,8 @@ __Parameters:__
 
 __Examples:__
 ```
-acl.allowedPermissions('user1', 'resource1', callback);
-acl.allowedPermissions('user1', ['resource1', 'resource2'], callback);
+myACL.allowedPermissions('user1', 'resource1', callback);
+myACL.allowedPermissions('user1', ['resource1', 'resource2'], callback);
 ```
 
 ### isAllowed (userId, resources, permissions, callback)
@@ -200,8 +200,8 @@ __Parameters:__
 
 __Examples:__
 ```
-acl.isAllowed('user1', 'resource1', 'permission1', callback);
-acl.isAllowed('user1', ['resource1', 'resource2'], ['permission1', 'permission2'], callback);
+myACL.isAllowed('user1', 'resource1', 'permission1', callback);
+myACL.isAllowed('user1', ['resource1', 'resource2'], ['permission1', 'permission2'], callback);
 ```
 
 ### areAnyRolesAllowed (roles, resource, permissions, callback)
@@ -216,10 +216,10 @@ __Parameters:__
 
 __Examples:__
 ```
-acl.areAnyRolesAllowed('role1', 'resource1', 'permission1', callback);
-acl.areAnyRolesAllowed('role1', 'resource1', ['permission1', 'permission2'], callback);
-acl.areAnyRolesAllowed(['role1', role2], 'resource1', 'permission1', callback);
-acl.areAnyRolesAllowed(['role1', role2], 'resource1', ['permission1', 'permission2'], callback);
+myACL.areAnyRolesAllowed('role1', 'resource1', 'permission1', callback);
+myACL.areAnyRolesAllowed('role1', 'resource1', ['permission1', 'permission2'], callback);
+myACL.areAnyRolesAllowed(['role1', role2], 'resource1', 'permission1', callback);
+myACL.areAnyRolesAllowed(['role1', role2], 'resource1', ['permission1', 'permission2'], callback);
 ```
 
 ### whatResources (roles, permissions, callback)
@@ -233,10 +233,10 @@ __Parameters:__
 
 __Examples:__
 ```
-acl.whatResources('role1', 'permission1', callback);
-acl.whatResources('role1', ['permission1', 'permission2'], callback);
-acl.whatResources(['role1', role2], 'permission1', callback);
-acl.whatResources(['role1', role2], ['permission1', 'permission2'], callback);
+myACL.whatResources('role1', 'permission1', callback);
+myACL.whatResources('role1', ['permission1', 'permission2'], callback);
+myACL.whatResources(['role1', role2], 'permission1', callback);
+myACL.whatResources(['role1', role2], ['permission1', 'permission2'], callback);
 ```
 
 ### removeResource (resourceId, callback)
@@ -249,5 +249,5 @@ __Parameters:__
 
 __Examples:__
 ```
-acl.removeResource('resource1', callback);
+myACL.removeResource('resource1', callback);
 ```
