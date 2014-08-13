@@ -22,11 +22,12 @@
   "main": "./index.js",
   "repository": {
     "type" : "git",
-    "url" : "https://github.com/emerging/node-graph-acl"
+    "url" : "https://github.com/ydigital-factory/node-graph-acl"
   },
   "author": "Nuno Barreto <nbarreto@gmail.com>",
   "contributors": [],
   "scripts": {
     "test": "grunt test"
-  }
+  },
+  "license": "MIT"
 }
