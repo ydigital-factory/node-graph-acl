@@ -1,6 +1,8 @@
 #node-graph-acl
 
 [![Build Status via Travis CI](https://travis-ci.org/ydigital-factory/node-graph-acl.svg?branch=master)](https://travis-ci.org/ydigital-factory/node-graph-acl)
+[![Dependency Status](https://gemnasium.com/ydigital-factory/node-graph-acl-rest.svg)](https://gemnasium.com/ydigital-factory/node-graph-acl-rest)
+
 
 Node Graph ACL is a ACL module that uses Graph databases.
 
