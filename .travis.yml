@@ -22,3 +22,5 @@ env:
   - NEO4J_VERSION="2.0.4"
 install:
   - npm install
+after_install:
+  - istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js 
