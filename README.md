@@ -1,6 +1,7 @@
 #node-graph-acl
 
 [![Build Status via Travis CI](https://travis-ci.org/ydigital-factory/node-graph-acl.svg?branch=master)](https://travis-ci.org/ydigital-factory/node-graph-acl)
+[![Coverage Status](https://img.shields.io/coveralls/ydigital-factory/node-graph-acl.svg)](https://coveralls.io/r/ydigital-factory/node-graph-acl)
 [![Dependency Status](https://gemnasium.com/ydigital-factory/node-graph-acl.svg)](https://gemnasium.com/ydigital-factory/node-graph-acl)
 
 
